@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
-document.body.style.backgroundColor = '#AFBAB7';
+document.body.style.backgroundColor = '#ece5da';
 const TIMER_DELAY = 1000;
 let intervalId = null;
 let selectedDate = null;
@@ -12,11 +12,7 @@ const calendar = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[data-start-timer]');
 startBtn.disabled = true;
 
-Report.info(
-  '👋 Greeting, my Friend!',
-  'Please, choose a date and click on start',
-  'Okay'
-);
+Report.info('Please, choose a date and click on start', 'Okay');
 
 flatpickr(calendar, {
   enableTime: true,
@@ -25,22 +21,15 @@ flatpickr(calendar, {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0].getTime() < Date.now()) {
-      Report.failure(
-        '🥺 Ooops...',
-        'Please, choose a date in the future and remember: "Knowledge rests not upon truth alone, but upon error also." - Carl Gustav Jung',
-        'Okay'
-      );
+      Report.failure('Please, choose a date in the future', 'Okay');
     } else {
-      Report.success(
-        '🥰 Congratulation! Click on start!',
-        '"Do not try to become a person of success but try to become a person of value." <br/><br/>- Albert Einstein',
-        'Okay'
-      );
+      Report.success('Click on start!', 'Okay');
       startBtn.disabled = false;
       const setTimer = () => {
         selectedDate = selectedDates[0].getTime();
         timer.start();
       };
+
       startBtn.addEventListener('click', setTimer);
     }
   },
@@ -58,7 +47,7 @@ const timer = {
       if (delta <= 0) {
         this.stop();
         Report.info(
-          '👏 Congratulation! Timer stopped!',
+          'Timer stopped!',
           'Please, if you want to start timer, choose a date and click on start or reload this page',
           'Okay'
         );
@@ -75,6 +64,7 @@ const timer = {
         this.addLeadingZero(seconds);
     }, TIMER_DELAY);
   },
+
   stop() {
     clearInterval(intervalId);
     this.intervalId = null;

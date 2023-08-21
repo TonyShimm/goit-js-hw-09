@@ -104,14 +104,14 @@ button[type='submit']:active {
   font-weight: 600;
   text-align: center;
   letter-spacing: 4px;
-  color: #f1ebe5;
+  color: #000000;
 }
 
 .label {
   text-align: center;
   font-weight: 400;
   text-transform: uppercase;
-  color: #f1ebe5;
+  color: #000000;
 }
 
 .flatpickr-months {
