@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
-document.body.style.backgroundColor = '#ece5da';
+document.body.style.backgroundColor = '#AFBAB7';
 const TIMER_DELAY = 1000;
 let intervalId = null;
 let selectedDate = null;
@@ -41,7 +41,6 @@ flatpickr(calendar, {
         selectedDate = selectedDates[0].getTime();
         timer.start();
       };
-
       startBtn.addEventListener('click', setTimer);
     }
   },
@@ -76,7 +75,6 @@ const timer = {
         this.addLeadingZero(seconds);
     }, TIMER_DELAY);
   },
-
   stop() {
     clearInterval(intervalId);
     this.intervalId = null;
@@ -89,6 +87,7 @@ const timer = {
     const minute = second * 60;
     const hour = minute * 60;
     const day = hour * 24;
+
     const days = this.addLeadingZero(Math.floor(ms / day));
     const hours = this.addLeadingZero(Math.floor((ms % day) / hour));
     const minutes = this.addLeadingZero(
