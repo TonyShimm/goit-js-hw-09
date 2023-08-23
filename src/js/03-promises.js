@@ -1,4 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 document.body.style.backgroundColor = '#ECE9E9';
 const form = document.querySelector('form.form');
 const options = {
@@ -32,8 +33,6 @@ function onPromiseCreate(e) {
   let inputAmount = Number(amount.value);
 
   for (let i = 1; i <= inputAmount; i += 1) {
-    inputDelay += inputStep;
-
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
         Notify.success(
@@ -48,5 +47,6 @@ function onPromiseCreate(e) {
         );
       });
     e.currentTarget.reset();
+    inputDelay += inputStep;
   }
 }
